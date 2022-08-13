@@ -21,5 +21,6 @@ export const AuthProvider = ({children}) => {
         </Context.Provider>
     );
 }
-
-export const useAuth = () => useContext(Context)
+const useAuth = () => useContext(Context);
+const getToken = ()=>{let user = JSON.parse(localStorage.getItem('user'));return user.token || false}
+export {useAuth, getToken}

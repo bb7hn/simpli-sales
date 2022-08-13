@@ -8,9 +8,9 @@ export default function PrivateRouter ({children}){
         return <Navigate to="/login" />
     }
     return (
-        <>
+        <div className='mb-4'>
         {children}
         <BottomNav />
-        </>
+        </div>
     )
 }

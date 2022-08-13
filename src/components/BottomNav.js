@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import {IoMdPerson,IoMdRestaurant}     from "react-icons/io";
+import {IoMdPerson,IoMdRestaurant,IoIosPizza}     from "react-icons/io";
 
 import { NavLink } from 'react-router-dom';
 const activeClassName ='text-white-50 ';
@@ -9,7 +9,7 @@ export default class BottomNav extends Component {
     render() {
         return (
             
-            <nav className='d-flex align-items-center justify-content-center position-absolute position-absolute bottom-0 start-0 bg-primary container-fluid text-white py-1'>
+            <nav className='d-flex align-items-center justify-content-center position-fixed position-absolute bottom-0 start-0 bg-primary container-fluid text-white py-1'>
                 
                 <NavLink to="/user/profile"  className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
                     <IoMdPerson />
@@ -17,7 +17,7 @@ export default class BottomNav extends Component {
                 </NavLink>
 
                 <NavLink to="/user/last-orders" className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
-                    <IoMdPerson />
+                <IoIosPizza />
                     <p className='fs-6 my-0'>Last Orders</p>
                 </NavLink>
 

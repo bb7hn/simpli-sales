@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 import { useAuth } from '../context/AuthContext';
 import { useNavigate,Navigate } from 'react-router-dom';
+import Loading from '../img/Loading.svg';
+
+const reactSwal = withReactContent(Swal);
+
 const Toast = Swal.mixin({
     toast: true,
     position: 'top',
@@ -13,7 +18,9 @@ const Toast = Swal.mixin({
         toast.addEventListener('mouseenter', Swal.stopTimer)
         toast.addEventListener('mouseleave', Swal.resumeTimer)
     }
-})
+});
+
+
 export default function LoginForm(props){
     
     const [email, setEmail]         = useState(0);
@@ -33,21 +40,25 @@ export default function LoginForm(props){
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        reactSwal.fire({
+            html:(<img alt="loader icon" src={Loading }/>),
+            allowOutsideClick   : false,
+            showConfirmButton:false
+        });
+            //return false;
         const query = `
             mutation {
-                loginWithEmail(email: "${email}", password: "${password}") {
-                    token
-                }
+                login(email: "${email}", password: "${password}")
             }
         `;
-        fetch('https://simplicityhw.cotunnel.com/graphql',{
+        fetch(process.env.REACT_APP_API_URL,{
             method:'POST',
             headers:{"Content-Type": "application/json"},
             body:JSON.stringify({query:query}),
         }).then(r=>r.json()).then(response=>{
-            console.log(response);
+            reactSwal.hideLoading();
             let data = response.data;
-            if(data.loginWithEmail == null){
+            if(data.login == null){
                 let message = JSON.parse(response.errors[0].message).message
                 Swal.fire({
                     icon                : 'error',
@@ -57,20 +68,17 @@ export default function LoginForm(props){
                 })
             }
             else{
-                const TOKEN = data.loginWithEmail.token;
+                const TOKEN = data.login;
                 //this.setState({token:TOKEN});
                 
-                console.log(1);
                 setUsr({
                     email:email,
                     token:TOKEN
                 });
-                console.log(2);
                 Toast.fire({
                     icon                : 'success',
                     title               : 'Success',
                     text                : 'Logged in successfully',
-                    allowOutsideClick   : false,
                     timer: 1000,
                 });
                 setTimeout(() => {
