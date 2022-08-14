@@ -128,7 +128,7 @@ export default function Profile(){
             </div>
         </div>
         <form onSubmit={e=>e.preventDefault()}>
-            <h5 className='text-info mt-3'>Informations</h5>
+            <h5 className='text-primary mt-3'>Informations</h5>
             <hr />
             <div className={inputClasses}>
                 <label 
@@ -195,7 +195,7 @@ export default function Profile(){
                 </span>
             </div>
 
-            <h5 className='text-info fw-bold color-information'>Contact Informations</h5><hr/>
+            <h5 className='text-primary fw-bold color-information'>Contact Informations</h5><hr/>
             {/* can use as prop for setting display property as none if field is empty: className={inputClasses+`${userInfo.contact===""?' d-none':''}`} */}
             <div className={inputClasses}>
                 <label 
@@ -269,7 +269,7 @@ export default function Profile(){
                 </span>
             </div>
 
-            <h5 className='text-info fw-bold color-information'>App Informations</h5><hr/>
+            <h5 className='text-primary fw-bold color-information'>App Informations</h5><hr/>
 
             <div className={inputClasses}>
                 <label 
