@@ -1,3 +1,5 @@
+# [Demo](https://simpli-sales.vercel.app) Link:
+- https://simpli-sales.vercel.app
 # Lastly on this project
 
 ----
