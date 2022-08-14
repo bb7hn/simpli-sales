@@ -3,7 +3,7 @@ import RegisterForm     from "./pages/RegisterForm";
 import WelcomePage      from "./pages/WelcomePage";
 import AuthLayout       from "./pages/AuthLayout";
 import LastOrders       from './pages/LastOrders';
-import Restaurants      from './pages/Restaurants';
+import Products         from './pages/Products';
 import Profile          from './pages/Profile';
 
 import { Route,Routes}  from 'react-router-dom';
@@ -23,10 +23,10 @@ function App() {
           </Route>
           <Route path="/user">
             <Route path="last-orders" element = {<PrivateRoute><LastOrders /></PrivateRoute>}/>
-            <Route path="restaurants" element={<PrivateRoute><Restaurants /></PrivateRoute>} />
+            <Route path="products" element={<PrivateRoute><Products /></PrivateRoute>} />
             <Route path="profile"     element={<PrivateRoute><Profile /></PrivateRoute>} />
           </Route>
-          
+          <Route path="*" element={<WelcomePage />}></Route>
         </Routes>
       </div>
     </>

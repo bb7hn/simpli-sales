@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
-import {IoMdPerson,IoMdRestaurant,IoIosPizza}     from "react-icons/io";
-
+import {IoMdPerson}     from "react-icons/io";
+import {AiOutlineShop, AiOutlineUnorderedList}     from "react-icons/ai";
 import { NavLink } from 'react-router-dom';
 const activeClassName ='text-white-50 ';
 const classes = 'd-flex flex-column align-items-center fs-3 mx-2 my-auto text-decoration-none';
@@ -9,7 +9,10 @@ export default class BottomNav extends Component {
     render() {
         return (
             
-            <nav className='d-flex align-items-center justify-content-center position-fixed position-absolute bottom-0 start-0 bg-primary container-fluid text-white py-1'>
+            <nav 
+                className='d-flex align-items-center justify-content-center position-fixed position-absolute bottom-0 start-0 bg-primary container-fluid text-white py-1'
+                style={{zIndex:1022}}    
+            >
                 
                 <NavLink to="/user/profile"  className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
                     <IoMdPerson />
@@ -17,13 +20,13 @@ export default class BottomNav extends Component {
                 </NavLink>
 
                 <NavLink to="/user/last-orders" className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
-                <IoIosPizza />
+                <AiOutlineUnorderedList />
                     <p className='fs-6 my-0'>Last Orders</p>
                 </NavLink>
 
-                <NavLink to="/user/restaurants" className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
-                    <IoMdRestaurant />
-                    <p className='fs-6 my-0'>Restaurant</p>
+                <NavLink to="/user/products" className={({ isActive }) =>isActive ? activeClassName+classes : 'text-white '+classes}>
+                    <AiOutlineShop />
+                    <p className='fs-6 my-0'>Products</p>
                 </NavLink>
                 
                 

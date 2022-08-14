@@ -103,7 +103,7 @@ export default function Profile(){
             console.log(UserInfo);
             setTimeout(() => {
                 setLoaded(true);
-            }, 300);
+            }, 50);
         })
         
     },[]);
